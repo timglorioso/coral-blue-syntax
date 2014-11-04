@@ -1,7 +1,7 @@
 {
   "name": "coral-blue-syntax",
   "theme": "syntax",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Crystal clear code.",
   "repository": "https://github.com/timglorioso/coral-blue-syntax",
   "license": "MIT",
