@@ -1,0 +1,187 @@
+@import 'stylesheets/syntax-variables.less';
+
+// Editor interface
+
+.editor-colors {
+    background-color: @syntax-background-color;
+    color: @syntax-text-color;
+}
+
+.editor {
+
+    .wrap-guide {
+        background-color: @syntax-wrap-guide-color;
+    }
+
+    .indent-guide {
+        color: @syntax-indent-guide-color;
+    }
+
+    .invisible,
+    .invisible-character {
+        color: @syntax-invisible-character-color;
+    }
+
+    .gutter {
+        background-color: @syntax-gutter-background-color;
+        color: @syntax-gutter-text-color;
+
+        .line-number {
+
+            &.cursor-line {
+                background-color: @syntax-gutter-background-color-selected;
+                color: @syntax-gutter-text-color-selected;
+            }
+
+            &.git-line-added {
+                border-left-color: @syntax-color-added;
+            }
+
+            &.git-line-modified {
+                border-left-color: @syntax-color-modified;
+            }
+
+            &.git-line-removed:before {
+                border-left-color: @syntax-color-removed;
+            }
+        }
+    }
+
+    .gutter .line-number.folded,
+    .gutter .line-number:after,
+    .fold-marker:after {
+        color: @white;
+    }
+
+    .cursor {
+        border-left: 2px solid @syntax-cursor-color;
+    }
+
+    .cursor-line {
+        background-color: @syntax-gutter-background-color-selected;
+    }
+
+    .highlight.selection .region {
+        background-color: @syntax-selection-color;
+    }
+}
+
+.bracket-matcher {
+    border: 1px solid @faded-blue;
+}
+
+// Common tokens
+
+.source {
+    color: @light-blue;
+}
+
+.comment,
+.source.embedded .comment {
+    color: @faded-blue;
+}
+
+.entity,
+.variable {
+    color: @light-blue;
+}
+
+.keyword.control,
+.keyword.other,
+.keyword.operator,
+.storage {
+    color: @pink;
+}
+
+.constant,
+.keyword.unit,
+.string {
+    color: @green;
+}
+
+.source .string {
+
+    .source,
+    .meta.embedded.line {
+        color: @green;
+    }
+
+    .punctuation.section.embedded {
+        color: @green;
+
+        .source {
+            color: @green;
+        }
+    }
+}
+
+// Language-specific tokens
+
+.c {
+
+    &.storage.type {
+        color: @pink;
+    }
+}
+
+.coffee {
+
+    &.function {
+
+        &.support {
+            color: @pink;
+
+            &.console {
+                color: @light-blue;
+            }
+        }
+
+        &.storage.type {
+            color: @pink;
+        }
+    }
+}
+
+.css {
+
+    &.support.type.property-name {
+        color: @pink;
+    }
+}
+
+.gfm {
+
+    &.heading {
+        color: @pink;
+    }
+
+    &.comment.quote {
+        color: @light-blue;
+    }
+}
+
+.html {
+
+    &.entity.other.attribute-name,
+    &.meta.tag.doctype {
+        color: @pink;
+    }
+}
+
+.java {
+
+    &.storage {
+
+        &.type {
+            color: @light-blue;
+
+            &.primitive {
+                color: @pink;
+            }
+        }
+
+        &.modifier.import {
+            color: @green;
+        }
+    }
+}
