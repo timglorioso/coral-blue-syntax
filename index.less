@@ -2,186 +2,233 @@
 
 // Editor interface
 
-.editor-colors {
-    background-color: @syntax-background-color;
-    color: @syntax-text-color;
+.editor-colors,
+:host {
+   background-color: @syntax-background-color;
+
+   // excludes input text in find/replace, etc.
+   :not(.editor--private.mini) {
+      color: @syntax-text-color;
+   }
 }
 
-.editor {
+.editor,
+:host {
 
-    .wrap-guide {
-        background-color: @syntax-wrap-guide-color;
-    }
+   .wrap-guide {
+      background-color: @syntax-wrap-guide-color;
+   }
 
-    .indent-guide {
-        color: @syntax-indent-guide-color;
-    }
+   .indent-guide {
+      color: @syntax-indent-guide-color;
+   }
 
-    .invisible,
-    .invisible-character {
-        color: @syntax-invisible-character-color;
-    }
+   .invisible,
+   .invisible-character {
+      color: @syntax-invisible-character-color;
+   }
 
-    .gutter {
-        background-color: @syntax-gutter-background-color;
-        color: @syntax-gutter-text-color;
+   .gutter {
+      background-color: @syntax-gutter-background-color;
+      color: @syntax-gutter-text-color;
 
-        .line-number {
+      .line-number {
 
-            &.cursor-line {
-                background-color: @syntax-gutter-background-color-selected;
-                color: @syntax-gutter-text-color-selected;
-            }
+         &.cursor-line {
+            background-color: @syntax-gutter-background-color-selected;
+            color: @syntax-gutter-text-color-selected;
+         }
 
-            &.git-line-added {
-                border-left-color: @syntax-color-added;
-            }
+         &.git-line-added {
+            border-left-color: @syntax-color-added;
+         }
 
-            &.git-line-modified {
-                border-left-color: @syntax-color-modified;
-            }
+         &.git-line-modified {
+            border-left-color: @syntax-color-modified;
+         }
 
-            &.git-line-removed:before {
-                border-left-color: @syntax-color-removed;
-            }
-        }
-    }
+         &.git-line-removed:before {
+            border-left-color: @syntax-color-removed;
+         }
+      }
+   }
 
-    .gutter .line-number.folded,
-    .gutter .line-number:after,
-    .fold-marker:after {
-        color: @white;
-    }
+   .gutter .line-number.folded,
+   .gutter .line-number:after,
+   .fold-marker:after {
+      color: @white;
+   }
 
-    .cursor {
-        border-left: 2px solid @syntax-cursor-color;
-    }
+   .cursor {
+      border-left: 2px solid @syntax-cursor-color;
+   }
 
-    .cursor-line {
-        background-color: @syntax-gutter-background-color-selected;
-    }
+   .cursor-line {
+      background-color: transparent;
+   }
 
-    .highlight.selection .region {
-        background-color: @syntax-selection-color;
-    }
-}
+   .highlight.selection .region {
+      background-color: @syntax-selection-color;
+   }
 
-.bracket-matcher {
-    border: 1px solid @faded-blue;
-}
 
-// Common tokens
+   .region.bracket-matcher {
+      background-color: @transparent-white-1;
+   }
 
-.source {
-    color: @light-blue;
-}
+   // Common tokens
 
-.comment,
-.source.embedded .comment {
-    color: @faded-blue;
-}
+   .source {
+      color: @white;
+   }
 
-.entity,
-.variable {
-    color: @light-blue;
-}
+   .comment,
+   .source.embedded .comment {
+      color: @faded-blue;
+   }
 
-.keyword.control,
-.keyword.other,
-.keyword.operator,
-.storage {
-    color: @pink;
-}
+   .entity,
+   .variable {
+      color: @white;
+   }
 
-.constant,
-.keyword.unit,
-.string {
-    color: @green;
-}
+   .keyword.control,
+   .keyword.other,
+   .keyword.operator,
+   .storage {
+      color: @pink;
+   }
 
-.source .string {
+   .constant,
+   .keyword.unit,
+   .string {
+      color: @green;
+   }
 
-    .source,
-    .meta.embedded.line {
-        color: @green;
-    }
+   .source .string {
 
-    .punctuation.section.embedded {
-        color: @green;
+      .source,
+      .meta.embedded.line {
+         color: @green;
+      }
 
-        .source {
+      .punctuation.section.embedded {
+         color: @green;
+
+         .source {
             color: @green;
-        }
-    }
-}
+         }
+      }
+   }
 
-// Language-specific tokens
+   // Language-specific tokens
 
-.c {
+   .c {
 
-    &.storage.type {
-        color: @pink;
-    }
-}
+      &.storage.type {
+         color: @pink;
+      }
+   }
 
-.coffee {
+   .coffee {
 
-    &.function {
+      &.function {
 
-        &.support {
+         &.support {
             color: @pink;
 
             &.console {
-                color: @light-blue;
+               color: @faded-white;
             }
-        }
+         }
 
-        &.storage.type {
+         &.storage.type {
             color: @pink;
-        }
-    }
-}
+         }
+      }
+   }
 
-.css {
+   .css {
 
-    &.support.type.property-name {
-        color: @pink;
-    }
-}
+      &.support.type.property-name {
+         color: @pink;
+      }
 
-.gfm {
+      &.pseudo-class,
+      &.entity.name.tag {
+         color: @faded-white;
+      }
+   }
 
-    &.heading {
-        color: @pink;
-    }
+   .gfm {
 
-    &.comment.quote {
-        color: @light-blue;
-    }
-}
+      &.heading {
+         color: @pink;
+      }
 
-.html {
+      &.comment.quote {
+         color: @faded-white;
+      }
+   }
 
-    &.entity.other.attribute-name,
-    &.meta.tag.doctype {
-        color: @pink;
-    }
-}
+   .html {
 
-.java {
+      &.entity.other.attribute-name {
+         color: @pink;
+      }
 
-    &.storage {
+      &.meta.tag.doctype,
+      &.entity.name.tag,
+      &.punctuation.tag {
+         color: @faded-white;
+      }
+   }
 
-        &.type {
-            color: @light-blue;
+   .java {
+
+      &.storage {
+
+         &.type {
+            color: @faded-white;
 
             &.primitive {
-                color: @pink;
+               color: @pink;
             }
-        }
+         }
 
-        &.modifier.import {
+         &.modifier.import {
             color: @green;
-        }
-    }
+         }
+      }
+   }
+
+   .less {
+
+      // & operator doesn't work here
+      .keyword.operator {
+         color: @white;
+      }
+
+      .keyword.control.html.elements {
+         color: @faded-white;
+      }
+   }
+
+   .python {
+
+      &.keyword.operator.logical {
+         color: @pink;
+      }
+   }
+
+   .scss {
+
+      &.entity.name.tag {
+         color: @faded-white;
+      }
+
+      &.property-name {
+         color: @pink;
+      }
+   }
 }
