@@ -88,13 +88,13 @@
    }
 
    .entity,
-   .variable {
+   .variable,
+   .keyword.operator {
       color: @white;
    }
 
    .keyword.control,
    .keyword.other,
-   .keyword.operator,
    .storage {
       color: @pink;
    }
@@ -173,6 +173,10 @@
 
    .html {
 
+      &.text {
+         color: @white;
+      }
+
       &.entity.other.attribute-name {
          color: @pink;
       }
@@ -189,7 +193,7 @@
       &.storage {
 
          &.type {
-            color: @faded-white;
+            color: @white;
 
             &.primitive {
                color: @pink;
@@ -216,8 +220,17 @@
 
    .python {
 
-      &.keyword.operator.logical {
-         color: @pink;
+      &.keyword {
+
+         &.operator.logical {
+            color: @pink;
+         }
+
+         // If you prefer "print" to be considered a highlighted keyword,
+         // comment out this rule.
+         &.other {
+            color: @white;
+         }
       }
    }
 
